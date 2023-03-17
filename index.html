@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Open+Sans:wght@600;800&family=Roboto:ital,wght@0,500;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="subject">
+        <div class="conteiner">
+            <h2 class="heading-item">Fetured Items</h2>
+            <p class="item-text">Shop for items based on what we featured in this week</p>
+            <div class="products-box"></div>
+            <div class="button">
+                <button class="browse_product">Browse All Product</button>
+            </div>
+        </div>
+    </section>
+    <script src="data.js"></script>
+    <script>
+        const dataProducts = JSON.parse(dataInfo);
+
+        dataProducts.forEach(element => {
+        const productsBoxEl = document.querySelector('.products-box');
+        console.log(productsBoxEl);
+        const productEl = document.createElement('div');
+        productEl.classList.add('product');
+        productsBoxEl.appendChild(productEl);
+
+        const imageEl = document.createElement('img');
+        imageEl.classList.add('image');
+        imageEl.setAttribute('alt', 'product image');
+        imageEl.src = element.image;
+        productsBoxEl.appendChild(imageEl);
+
+        const nameEl = document.createElement('h3');
+        nameEl.classList.add('product-name');
+        nameEl.textContent = element.name;
+        productsBoxEl.appendChild(nameEl);
+
+        const descriptionEl = document.createElement('p');
+        descriptionEl.classList.add('dsc');
+        descriptionEl.textContent = element.description;
+        productsBoxEl.appendChild(descriptionEl);
+
+        const priceEl = document.createElement('span');
+        priceEl.classList.add('price');
+        priceEl.textContent = element.price;
+        productsBoxEl.appendChild(priceEl);
+        }); 
+    </script>
+</body>
+</html>
